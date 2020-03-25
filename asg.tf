@@ -1,5 +1,5 @@
 resource "aws_autoscaling_group" "nat_instance" {
-  name               = local.name
+  name_prefix        = local.name
   desired_capacity   = 1
   max_size           = 1
   min_size           = 1
