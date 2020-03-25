@@ -9,3 +9,7 @@ output "eip" {
 output "security_group_arn" {
   value = aws_security_group.nat.arn
 }
+
+output "security_group_id" {
+  value = aws_security_group.nat.id
+}
