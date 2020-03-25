@@ -23,6 +23,8 @@ data "aws_subnet" "nat" {
   id = local.public_subnet_ids[0]
 }
 
+data "aws_region" "current" {}
+
 locals {
   name                 = var.name
   vpc_id               = data.aws_subnet.nat.vpc_id
