@@ -1,9 +1,6 @@
 resource "aws_route_table" "nat" {
   vpc_id = local.vpc_id
-
-  tags = {
-    Name = local.name
-  }
+  tags   = local.tags
 }
 
 resource "aws_route" "internet" {

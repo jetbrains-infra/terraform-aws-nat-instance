@@ -2,6 +2,7 @@ resource "aws_security_group" "nat" {
   name        = "Nat"
   description = "Default rules for Nat instance"
   vpc_id      = local.vpc_id
+  tags        = local.tags
 }
 
 resource "aws_security_group_rule" "ingess_http" {
