@@ -3,7 +3,7 @@ resource "aws_autoscaling_group" "nat_instance" {
   desired_capacity   = 1
   max_size           = 1
   min_size           = 1
-  availability_zones = ["eu-west-1b"]
+  availability_zones = [local.az]
 
   launch_template {
     id      = aws_launch_template.nat_instance.id

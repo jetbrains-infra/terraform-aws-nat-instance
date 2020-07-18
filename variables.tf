@@ -31,4 +31,5 @@ locals {
   instance_type        = var.instance_type
   public_subnet_ids    = [var.public_subnet_id]
   private_subnet_cidrs = var.private_subnet_cidrs
+  az                   = "${data.aws_region.current.name}b"
 }
