@@ -12,7 +12,6 @@ variable "instance_type" {
 variable "private_subnet_cidrs" {
   type = list(string)
 }
-
 data "aws_ami" "nat" {
   most_recent = true
   owners      = ["amazon"]
@@ -22,11 +21,9 @@ data "aws_ami" "nat" {
     values = ["amzn-ami-vpc-nat*"]
   }
 }
-
 data "aws_subnet" "nat" {
   id = local.public_subnet_ids[0]
 }
-
 data "aws_region" "current" {}
 
 locals {
@@ -35,7 +32,7 @@ locals {
   instance_type        = var.instance_type
   public_subnet_ids    = [var.public_subnet_id]
   private_subnet_cidrs = var.private_subnet_cidrs
-  az                   = "${data.aws_region.current.name}b"
+  az                   = data.aws_subnet.nat.availability_zone
   tags = merge({
     Name         = local.name
     Module       = "Nat Instance"
