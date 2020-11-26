@@ -28,7 +28,7 @@ data "aws_ami" "nat" {
   }
 }
 data "aws_subnet" "nat" {
-  id = local.public_subnet_ids[0]
+  id = local.public_subnet_id
 }
 data "aws_region" "current" {}
 
@@ -36,7 +36,7 @@ locals {
   name                 = var.name
   vpc_id               = data.aws_subnet.nat.vpc_id
   instance_type        = var.instance_type
-  public_subnet_ids    = [var.public_subnet_id]
+  public_subnet_id     = var.public_subnet_id
   private_subnet_cidrs = var.private_subnet_cidrs
   az                   = data.aws_subnet.nat.availability_zone
   ports                = var.ports
