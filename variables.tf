@@ -4,6 +4,7 @@ variable "name" {
 variable "tags" {
   description = "Tags."
   type        = map(string)
+  default     = {}
 }
 variable "public_subnet_id" {}
 variable "instance_type" {
