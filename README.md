@@ -2,7 +2,7 @@
 Terraform module to create NAT instance. The module provides:
 
 * NAT instance security group with rules allowed 443 port by default
-* VPC S3/ECR Logs endpoints to avoid passing internal traffic through NAT
+* VPC S3 Logs endpoints to avoid passing internal traffic through NAT
 
 ## Usage
 
