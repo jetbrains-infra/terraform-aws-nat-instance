@@ -12,6 +12,11 @@ variable "instance_type" {
 variable "private_subnet_cidrs" {
   type = list(string)
 }
+variable "ports" {
+  description = "List of ports allowed to connect from your VPC."
+  type        = list(number)
+  default     = [443]
+}
 data "aws_ami" "nat" {
   most_recent = true
   owners      = ["amazon"]
@@ -33,6 +38,7 @@ locals {
   public_subnet_ids    = [var.public_subnet_id]
   private_subnet_cidrs = var.private_subnet_cidrs
   az                   = data.aws_subnet.nat.availability_zone
+  ports                = var.ports
   tags = merge({
     Name         = local.name
     Module       = "Nat Instance"
