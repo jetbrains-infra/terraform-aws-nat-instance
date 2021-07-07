@@ -19,7 +19,10 @@ variable "ports" {
     tcp = list(number),
     udp = list(number),
   })
-  default     = [443]
+  default     = {
+    tcp = [443]
+    udp = []
+  }
 }
 variable "ami" {
   default = ""
