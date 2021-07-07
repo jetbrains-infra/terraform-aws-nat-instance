@@ -13,3 +13,7 @@ output "security_group_arn" {
 output "security_group_id" {
   value = aws_security_group.nat.id
 }
+
+output "network_interface_id" {
+  value = aws_network_interface.nat.id
+}

@@ -1,5 +1,5 @@
 resource "aws_network_interface" "nat" {
-  subnet_id         = local.public_subnet_id
+  subnet_id         = local.nat_subnet_id
   source_dest_check = false
   security_groups   = [aws_security_group.nat.id]
   tags              = local.tags
