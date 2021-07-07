@@ -43,4 +43,8 @@ resource "aws_security_group" "nat" {
       to_port     = egress.value
     }
   }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
