@@ -13,7 +13,7 @@ resource "aws_eip" "public_ip" {
 
 resource "aws_launch_template" "nat_instance" {
   name_prefix   = local.name
-  image_id      = data.aws_ami.nat.id
+  image_id      = local.ami
   instance_type = local.instance_type
   tags          = local.tags
 
