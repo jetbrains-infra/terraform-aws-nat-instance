@@ -1,5 +1,5 @@
 resource "aws_security_group" "nat" {
-  name        = "Nat"
+  name_prefix = "NatAz${title(substr(local.az, -1, -1))}"
   description = "Rules for Nat instance"
   vpc_id      = local.vpc_id
   tags        = local.tags
