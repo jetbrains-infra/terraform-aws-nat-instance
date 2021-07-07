@@ -15,7 +15,10 @@ variable "client_subnet_cidrs" {
 }
 variable "ports" {
   description = "List of ports allowed to connect from your VPC."
-  type        = list(number)
+  type        = object({
+    tcp = list(number),
+    udp = list(number),
+  })
   default     = [443]
 }
 variable "ami" {
