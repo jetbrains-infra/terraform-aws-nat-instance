@@ -16,6 +16,7 @@ resource "aws_launch_template" "nat_instance" {
   image_id      = local.ami
   instance_type = local.instance_type
   tags          = local.tags
+  key_name      = local.key_pair_name
 
   network_interfaces {
     device_index         = 0

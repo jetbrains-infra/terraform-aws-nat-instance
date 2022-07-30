@@ -1,6 +1,9 @@
 variable "name" {
   default = "NatInstance"
 }
+variable "key_name" {
+  description = "The key name to attach to the instances"
+}
 variable "tags" {
   description = "Tags."
   type        = map(string)
@@ -15,11 +18,11 @@ variable "client_subnet_cidrs" {
 }
 variable "ports" {
   description = "List of ports allowed to connect from your VPC."
-  type        = object({
+  type = object({
     tcp = list(number),
     udp = list(number),
   })
-  default     = {
+  default = {
     tcp = [443]
     udp = []
   }
@@ -51,6 +54,7 @@ locals {
   name                = var.name
   vpc_id              = data.aws_subnet.nat.vpc_id
   instance_type       = var.instance_type
+  key_pair_name       = var.key_name
   nat_subnet_id       = var.nat_subnet_id
   client_subnet_cidrs = var.client_subnet_cidrs
   az                  = data.aws_subnet.nat.availability_zone
