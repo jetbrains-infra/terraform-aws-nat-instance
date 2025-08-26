@@ -15,11 +15,11 @@ variable "client_subnet_cidrs" {
 }
 variable "ports" {
   description = "List of ports allowed to connect from your VPC."
-  type        = object({
+  type = object({
     tcp = list(number),
     udp = list(number),
   })
-  default     = {
+  default = {
     tcp = [443]
     udp = []
   }
@@ -34,6 +34,7 @@ variable "s3_endpoint" {
   default = false
 }
 data "aws_ami" "nat" {
+  count       = var.ami == "" ? 1 : 0
   most_recent = true
   owners      = ["amazon"]
 
@@ -55,7 +56,7 @@ locals {
   client_subnet_cidrs = var.client_subnet_cidrs
   az                  = data.aws_subnet.nat.availability_zone
   ports               = var.ports
-  ami                 = var.ami == "" ? data.aws_ami.nat.id : var.ami
+  ami                 = var.ami == "" ? data.aws_ami.nat[length(data.aws_ami.nat)].id : var.ami
   internet_route      = var.internet_access == true ? 1 : 0
   s3_endpoint         = var.s3_endpoint == true ? 1 : 0
   tags = merge({
